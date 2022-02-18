@@ -4,7 +4,7 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
-  serviceAccountName: cert-manager
+  serviceAccountName: cert-manager-serviceaccount
   releaseName: cert-manager
   chart:
     spec:
