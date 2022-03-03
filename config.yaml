@@ -1,3 +1,4 @@
 name: cert-manager
+serviceAccountName: cert-manager-serviceaccount
 values: []
 dependencies: []
