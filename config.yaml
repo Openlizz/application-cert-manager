@@ -10,7 +10,7 @@ values:
       shaRange: HEAD
   clusterValues:
     - name: nginxName1
-      template: '{{ (index .Name.Applications 0).Name }}'
+      template: '{{ (index .Applications 0).Name }}'
     - name: nginxName2
       template: '{{ range _, $application := .Applications }} {{$application.Name}} {{ end }}'
     - name: nginxName2bis
