@@ -14,12 +14,12 @@ values:
     - name: treafikName
       template: '{{ range .Applications }}{{ if eq .Configuration.Repository "https://gitlab.com/openlizz/applications/treafik" }}{{.Name}}{{ end }}{{ end }}'
 dependencies:
-  - {{ or Values.isNginxInstalled Values.isTreafikInstalled }}
+  - {{ or (index . "isNginxInstalled") (index . "isTreafikInstalled") }}
 dependsOn:
-  {{ if Values.isNginxInstalled }}
-  - name: {{ if Values.nginxName }}
-    namespace: {{ if .nginxName }}
+  {{ if (index . "isNginxInstalled") }}
+  - name: {{ index . "nginxName" }}
+    namespace: {{ index . "nginxName" }}
   {{ else }}
-  - name: {{ if Values.treafikName }}
-    namespace: {{ if Values.treafikName }}
+  - name: {{ index . "treafikName" }}
+    namespace: {{ index . "treafikName" }}
   {{ end }}
