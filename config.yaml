@@ -4,10 +4,10 @@ values:
   applicationDependencies:
     - name: isNginxInstalled
       repository: https://gitlab.com/openlizz/applications/nginx
-      shaRange: commitSHA1...commitSHA2
+      shaRange: HEAD
     - name: isTreafikInstalled
       repository: https://gitlab.com/openlizz/applications/treafik
-      shaRange: commitSHA1...commitSHA2
+      shaRange: HEAD
   clusterValues:
     - name: nginxName
       template: '{{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/nginx" }} .name {{ end }} {{- end }}'
