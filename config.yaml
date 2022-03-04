@@ -1,4 +1,25 @@
 name: cert-manager
 serviceAccountName: cert-manager-serviceaccount
-values: []
-dependencies: []
+values:
+  applicationDependencies:
+    - name: isNginxInstalled
+      repositoryUrl: https://gitlab.com/openlizz/apps/nginx
+      shaRange: commitSHA1...commitSHA2
+    - name: isTreafikInstalled
+      repositoryUrl: https://gitlab.com/openlizz/apps/treafik
+      shaRange: commitSHA1...commitSHA2
+  clusterValues:
+    - name: nginxName
+      template: {{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/nginx" }} .name {{ end }} {{- end }}
+    - name: treafikName
+      template: {{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/treafik" }} .name {{ end }} {{- end }}
+dependencies:
+  - {{ or Values.isNginxInstalled Values.isTreafikInstalled }}
+dependsOn:
+  {{ if Values.isNginxInstalled }}
+  - name: {{ if Values.nginxName }}
+    namespace: {{ if .nginxName }}
+  {{ else }}
+  - name: {{ if Values.treafikName }}
+    namespace: {{ if Values.treafikName }}
+  {{ end }}
