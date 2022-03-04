@@ -15,12 +15,16 @@ values:
       template: '{{ range $index, $application := .Applications }} {{$application.Name}} {{ end }}'
     - name: nginxName2bis
       template: '{{ range .Applications }} {{.Name}} {{ end }}'
+    - name: nginxName2rpo
+      template: '{{ range $index, $application := .Applications }} {{$application.Repository}} {{ end }}'
+    - name: nginxName2bisrpo
+      template: '{{ range .Applications }} {{.Repository}} {{ end }}'
     - name: nginxName3
-      template: '{{ range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/nginx" }} {{.Name}} {{ end }} {{- end }}'
+      template: '{{ range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/nginx" }} {{.Name}} {{ end }} {{ end }}'
     - name: nginxName
-      template: '{{- range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/nginx" }} .Name {{ end }} {{- end }}'
+      template: '{{ range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/nginx" }} .Name {{ end }} {{ end }}'
     - name: treafikName
-      template: '{{- range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/treafik" }} .Name {{ end }} {{- end }}'
+      template: '{{ range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/treafik" }} .Name {{ end }} {{ end }}'
 dependencies:
   - {{ or Values.isNginxInstalled Values.isTreafikInstalled }}
 dependsOn:
