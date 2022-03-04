@@ -9,6 +9,14 @@ values:
       repository: https://gitlab.com/openlizz/applications/treafik
       shaRange: HEAD
   clusterValues:
+    - name: nginxName1
+      template: '{{ .Applications[0].Name }}'
+    - name: nginxName2
+      template: '{{ range _, $application := .Applications }} {{$application.Name}} {{ end }}'
+    - name: nginxName2bis
+      template: '{{ range .Applications }} {{.Name}} {{ end }}'
+    - name: nginxName3
+      template: '{{ range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/nginx" }} {{.Name}} {{ end }} {{- end }}'
     - name: nginxName
       template: '{{- range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/nginx" }} .Name {{ end }} {{- end }}'
     - name: treafikName
