@@ -10,9 +10,9 @@ values:
       shaRange: commitSHA1...commitSHA2
   clusterValues:
     - name: nginxName
-      template: {{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/nginx" }} .name {{ end }} {{- end }}
+      template: '{{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/nginx" }} .name {{ end }} {{- end }}'
     - name: treafikName
-      template: {{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/treafik" }} .name {{ end }} {{- end }}
+      template: '{{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/treafik" }} .name {{ end }} {{- end }}'
 dependencies:
   - {{ or Values.isNginxInstalled Values.isTreafikInstalled }}
 dependsOn:
