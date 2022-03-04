@@ -10,9 +10,9 @@ values:
       shaRange: HEAD
   clusterValues:
     - name: nginxName
-      template: '{{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/nginx" }} .name {{ end }} {{- end }}'
+      template: '{{- range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/nginx" }} .Name {{ end }} {{- end }}'
     - name: treafikName
-      template: '{{- range .applications }} {{ if eq .repository "https://gitlab.com/openlizz/applications/treafik" }} .name {{ end }} {{- end }}'
+      template: '{{- range .Applications }} {{ if eq .Repository "https://gitlab.com/openlizz/applications/treafik" }} .Name {{ end }} {{- end }}'
 dependencies:
   - {{ or Values.isNginxInstalled Values.isTreafikInstalled }}
 dependsOn:
