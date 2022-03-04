@@ -3,10 +3,10 @@ serviceAccountName: cert-manager-serviceaccount
 values:
   applicationDependencies:
     - name: isNginxInstalled
-      repositoryUrl: https://gitlab.com/openlizz/apps/nginx
+      repository: https://gitlab.com/openlizz/applications/nginx
       shaRange: commitSHA1...commitSHA2
     - name: isTreafikInstalled
-      repositoryUrl: https://gitlab.com/openlizz/apps/treafik
+      repository: https://gitlab.com/openlizz/applications/treafik
       shaRange: commitSHA1...commitSHA2
   clusterValues:
     - name: nginxName
