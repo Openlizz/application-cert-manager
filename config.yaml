@@ -12,7 +12,7 @@ values:
     - name: nginxName1
       template: '{{ (index .Applications 0).Name }}'
     - name: nginxName2
-      template: '{{ range _, $application := .Applications }} {{$application.Name}} {{ end }}'
+      template: '{{ range $index, $application := .Applications }} {{$application.Name}} {{ end }}'
     - name: nginxName2bis
       template: '{{ range .Applications }} {{.Name}} {{ end }}'
     - name: nginxName3
