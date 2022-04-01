@@ -17,9 +17,9 @@ dependencies:
   - {{ or (index . "isNginxInstalled") (index . "isTreafikInstalled") }}
 dependsOn:
   {{ if (index . "isNginxInstalled") }}
-  - name: {{ index . "nginxName" }}
-    namespace: {{ index . "nginxName" }}
+  name: {{ index . "nginxName" }}
+  namespace: {{ index . "nginxName" }}
   {{ else }}
-  - name: {{ index . "treafikName" }}
-    namespace: {{ index . "treafikName" }}
+  name: {{ index . "treafikName" }}
+  namespace: {{ index . "treafikName" }}
   {{ end }}
