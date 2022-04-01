@@ -3,16 +3,16 @@ serviceAccountName: cert-manager-serviceaccount
 values:
   applicationDependencies:
     - name: isNginxInstalled
-      repository: https://gitlab.com/openlizz/applications/nginx
+      repository: gitlab.com/openlizz/applications/nginx
       shaRange: HEAD
     - name: isTreafikInstalled
-      repository: https://gitlab.com/openlizz/applications/treafik
+      repository: gitlab.com/openlizz/applications/treafik
       shaRange: HEAD
   clusterValues:
     - name: nginxName
-      template: '{{ range .Applications }}{{ if eq .Configuration.Repository "https://gitlab.com/openlizz/applications/nginx" }}{{.Name}}{{ end }}{{ end }}'
+      template: '{{ range .Applications }}{{ if eq .Configuration.Repository "gitlab.com/openlizz/applications/nginx" }}{{.Name}}{{ end }}{{ end }}'
     - name: treafikName
-      template: '{{ range .Applications }}{{ if eq .Configuration.Repository "https://gitlab.com/openlizz/applications/treafik" }}{{.Name}}{{ end }}{{ end }}'
+      template: '{{ range .Applications }}{{ if eq .Configuration.Repository "gitlab.com/openlizz/applications/treafik" }}{{.Name}}{{ end }}{{ end }}'
 dependencies:
   - {{ or (index . "isNginxInstalled") (index . "isTreafikInstalled") }}
 dependsOn:
