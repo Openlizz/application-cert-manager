@@ -4,7 +4,7 @@ metadata:
   name: cert-manager
   namespace: {{ index . "namespace" }}
 spec:
-  serviceAccountName: cert-manager-serviceaccount
+  serviceAccountName: {{ index . "serviceAccountName" }}
   releaseName: cert-manager
   chart:
     spec:
