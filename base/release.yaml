@@ -2,14 +2,14 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: cert-manager
-  namespace: {{ index . "namespace" }}
+  namespace: {{index . "namespace"}}
 spec:
-  serviceAccountName: {{ index . "serviceAccountName" }}
+  serviceAccountName: {{index . "serviceAccountName"}}
   releaseName: cert-manager
   chart:
     spec:
       chart: cert-manager
-      version: v1.6.1
+      version: v1.8.0
       sourceRef:
         kind: HelmRepository
         name: jetstack-charts
